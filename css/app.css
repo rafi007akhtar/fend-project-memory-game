@@ -107,3 +107,25 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* resonsiveness */
+@media screen and (max-width: 350px) {
+    .deck {
+        width: 100%;
+        border-radius: 0;
+    }
+    .deck .card {
+        width: 20%;
+        height: 50px;
+        margin-left: 5x;
+        margin-right: 5px;
+        margin-top: 0;
+/*
+        margin-top: -150px;
+        margin-bottom: -150px;
+*/
+    }
+    .score-panel {
+        width: 70%;
+    }
+}
