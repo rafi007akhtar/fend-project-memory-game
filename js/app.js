@@ -1,8 +1,3 @@
-function showCard(evt) {
-    console.log("clicked");
-    evt.classList.add("show");
-}
-
 /*
  * Create a list that holds all of your cards
  */
@@ -26,18 +21,20 @@ let cards = [
 ];
 cards = shuffle(cards);
 //console.log(cards);
-let icons = [];
 let cardElems = [];
+let cardId = 0;
+
 for (let card of cards) {
     // create a new icon
     let icon = document.createElement("i");
     icon.classList.add("fa", card);
-    icons.push(icon);
     
     // create a new list item
     let li = document.createElement("li");
     li.classList.add("card");
     li.appendChild(icon);
+    li.setAttribute("id", "card" + cardId++);
+    li.addEventListener("click", cardClick);
     cardElems.push(li);
 }
 //console.log(cardElems);
@@ -83,3 +80,22 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+let openCards = [];
+function cardClick(evt) {
+//    console.log(evt);
+    let cardElem = document.getElementById(evt.target.id);
+    cardElem.classList.toggle("show");
+    cardElem.classList.toggle("open");
+}
+
+
+
+
+
+
+
+
+
+
+
+
