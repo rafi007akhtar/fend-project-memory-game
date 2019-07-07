@@ -21,38 +21,39 @@ let cards = [
 ];
 cards = shuffle(cards);
 console.log(cards);
-let cardElems = [];
-let cardId = 0;
 
-for (let card of cards) {
-    // create a new icon
-    let icon = document.createElement("i");
-    icon.classList.add("fa", card);
+function paint() {
+    let cardElems = [];
+    let cardId = 0;
+
+    for (let card of cards) {
+        // create a new icon
+        let icon = document.createElement("i");
+        icon.classList.add("fa", card);
+
+        // create a new list item
+        let li = document.createElement("li");
+        li.classList.add("card");
+        li.appendChild(icon);
+        li.setAttribute("id", "card" + cardId++);
+        li.addEventListener("click", cardClick);
+        cardElems.push(li);
+    }
+    //console.log(cardElems);
     
-    // create a new list item
-    let li = document.createElement("li");
-    li.classList.add("card");
-    li.appendChild(icon);
-    li.setAttribute("id", "card" + cardId++);
-    li.addEventListener("click", cardClick);
-    cardElems.push(li);
+    /*
+     * Display the cards on the page
+     *   - shuffle the list of cards using the provided "shuffle" method below
+     *   - loop through each card and create its HTML
+     *   - add each card's HTML to the page
+     */
+    let deck = document.querySelector(".deck");
+    deck.innerHTML = "";
+    for (let cardElem of cardElems) {
+        deck.appendChild(cardElem);
+    }
 }
-//console.log(cardElems);
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-let deck = document.querySelector(".deck");
-deck.innerHTML = "";
-for (let cardElem of cardElems) {
-    deck.appendChild(cardElem);
-}
-
-
+paint();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -126,7 +127,18 @@ function closeCards() {
 }
 
 
+// ADDITIONAL FUNCTIONALITIES IMPLEMENTED
 
+let refresh = document.querySelector(".restart");
+refresh.addEventListener("click", function() {
+    alert("clicked!");
+    cards = shuffle(cards);
+    paint();
+    let openCards = [];
+    let clicks = 0;
+    let matches = 0;
+    document.querySelector(".moves").textContent = 0;
+});
 
 
 
