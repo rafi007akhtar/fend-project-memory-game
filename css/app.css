@@ -109,7 +109,7 @@ h1 {
 }
 
 /* resonsiveness */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 600px) {
     .deck {
         width: 100%;
         border-radius: 0;
