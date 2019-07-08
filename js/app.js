@@ -20,7 +20,7 @@ let cards = [
     "fa-cube"
 ];
 cards = shuffle(cards);
-console.log(cards);
+//console.log(cards);
 
 function paint() {
     let cardElems = [];
@@ -94,7 +94,7 @@ function cardClick(evt) {
         if (firstCard == secondCard) {
             // IT'S A MATCH!
             matches++;
-            console.log(`${openCards[0]}, ${openCards[1]}`);
+//            console.log(`${openCards[0]}, ${openCards[1]}`);
             openCards[0].classList.add("match");
             openCards[1].classList.add("match");
             
@@ -110,7 +110,7 @@ function cardClick(evt) {
         }
         else {
 //            + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-            console.log(openCards[0]);
+//            console.log(openCards[0]);
             
             // ADD ANIMATIONS
             openCards[0].style.animationName = "oscillate";
@@ -132,11 +132,37 @@ function cardClick(evt) {
 //    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
     if (matches === 8) {
         setTimeout (function() {
-            alert("Game over! You won!");
+//            alert("Game over! You won!");
+            
+            // MODAL
+            // The following modal code has been borrowed from:
+            // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // Open the modal 
+              modal.style.display = "block";
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }    
+            // When the user clicks the button, open the modal 
+            modal.style.display = "block";
         }, 300);
     }
     
-    console.log(openCards);
+//    console.log(openCards);
 }
 
 function closeCards(card0, card1) {
@@ -148,7 +174,7 @@ function closeCards(card0, card1) {
         openCards = [];
     });
     // REMOVE ANIMATIONS
-    console.log(openCards);
+//    console.log(openCards);
 }
 
 
@@ -164,12 +190,6 @@ refresh.addEventListener("click", function() {
     let matches = 0;
     document.querySelector(".moves").textContent = 0;
 });
-
-
-
-
-
-
 
 
 
