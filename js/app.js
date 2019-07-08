@@ -97,11 +97,30 @@ function cardClick(evt) {
             console.log(`${openCards[0]}, ${openCards[1]}`);
             openCards[0].classList.add("match");
             openCards[1].classList.add("match");
+            
+            // ADD ANIMATIONS
+            openCards[0].style.animationName = "jerk";
+            openCards[0].style.animationDuration = "0.2s";
+            openCards[0].style.animationIterationCount = "2";
+            openCards[1].style.animationName = "jerk";
+            openCards[1].style.animationDuration = "0.2s";
+            openCards[1].style.animationIterationCount = "2";
+            
             openCards = [];
         }
         else {
 //            + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-            setTimeout(closeCards, 1000)
+            console.log(openCards[0]);
+            
+            // ADD ANIMATIONS
+            openCards[0].style.animationName = "oscillate";
+            openCards[0].style.animationDuration = "0.3s";
+            openCards[0].style.animationIterationCount = "3";
+            openCards[1].style.animationName = "oscillate";
+            openCards[1].style.animationDuration = "0.3s";
+            openCards[1].style.animationIterationCount = "3";
+            
+            setTimeout(closeCards, 1000);
         };
     }
     
@@ -115,14 +134,18 @@ function cardClick(evt) {
         alert("Game over! You won!");
     }
     
-    console.log(openCards); 
+    console.log(openCards);
 }
 
-function closeCards() {
+function closeCards(card0, card1) {
     openCards.map(function(card) {
         card.classList.remove("show", "open");
+        card.style.removeProperty("animation-name");
+        card.style.removeProperty("animation-duration");
+        card.style.removeProperty("animation-iteration-count");
         openCards = [];
     });
+    // REMOVE ANIMATIONS
     console.log(openCards);
 }
 

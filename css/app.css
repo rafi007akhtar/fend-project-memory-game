@@ -63,6 +63,7 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+/*    padding-right: 50px;*/
 }
 
 .deck .card.open {
@@ -127,5 +128,40 @@ h1 {
     }
     .score-panel {
         width: 70%;
+    }
+}
+
+/* animations */
+@keyframes oscillate {
+    0% { 
+        padding-left: 0; 
+        padding-right: 0;
+        background-color: #d25f5f;
+    }
+    25% { 
+        padding-left: 30px; 
+        background-color: #d25f5f;
+    }
+    75% { 
+        padding-right: 30px;
+        background-color: #d25f5f;
+    }
+    100% { 
+        padding-left: 0; 
+        padding-right: 0;
+        background-color: #d25f5f;
+    }
+}
+
+/*
+.card:hover {
+    animation-name: jerk;
+    animation-duration: 0.2s;
+    animation-iteration-count: 2;
+}
+*/
+@keyframes jerk {
+    50% {
+        height: 75px;
     }
 }
